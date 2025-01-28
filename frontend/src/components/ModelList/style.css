@@ -1,0 +1,72 @@
+/* Model list container */
+.model-list {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-small);
+    padding: var(--spacing-small);
+}
+
+/* Model select dropdown */
+.model-list select {
+    flex: 1 1 auto;
+    min-width: 200px;
+    height: 2em;
+    padding: 0 var(--spacing-small);
+    font-family: var(--font-family);
+    font-size: 1em;
+    color: var(--text-color);
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.model-list select:hover {
+    border-color: var(--primary-color);
+}
+
+.model-list select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(6, 150, 215, 0.2);
+}
+
+.model-list select:disabled {
+    background-color: var(--disabled-background);
+    cursor: not-allowed;
+}
+
+/* Upload button */
+.model-list button {
+    flex: 0 0 auto;
+    height: 2em;
+    padding: 0 var(--spacing-medium);
+    font-family: var(--font-family);
+    font-size: 1em;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.model-list button:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.model-list button:active {
+    transform: translateY(1px);
+}
+
+.model-list button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(6, 150, 215, 0.2);
+}
+
+.model-list button:disabled {
+    background-color: var(--disabled-color);
+    cursor: not-allowed;
+    transform: none;
+} 

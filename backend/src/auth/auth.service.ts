@@ -9,8 +9,8 @@ export class AuthService {
     private readonly authenticationClient: AuthenticationClient = new AuthenticationClient();
 
     constructor(private readonly configService: ConfigService) {
-        this.clientId = this.configService.getOrThrow<string>('APS_CLIENT_ID');
-        this.clientSecret = this.configService.getOrThrow<string>('APS_CLIENT_SECRET');
+        this.clientId = process.env.APS_CLIENT_ID as string;
+        this.clientSecret = process.env.APS_CLIENT_SECRET as string;
     }
 
     async getPublicToken() {

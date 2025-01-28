@@ -1,15 +1,18 @@
+/* Main layout and typography */
 body, html {
     margin: 0;
     padding: 0;
     height: 100vh;
-    font-family: ArtifaktElement;
+    font-family: ArtifaktElement; /* APS design system font */
 }
 
+/* Common layout for full-width elements */
 #header, #preview, #overlay {
     position: absolute;
     width: 100%;
 }
 
+/* Header bar styling */
 #header {
     height: 3em;
     display: flex;
@@ -18,18 +21,21 @@ body, html {
     align-items: center;
 }
 
+/* Main content areas */
 #preview, #overlay {
-    top: 3em;
+    top: 3em; /* Position below header */
     bottom: 0;
 }
 
+/* Overlay for notifications */
 #overlay {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 1em;
-    display: none;
+    display: none; /* Hidden by default */
 }
 
+/* Notification box styling */
 #overlay > .notification {
     margin: auto;
     padding: 1em;
@@ -37,6 +43,7 @@ body, html {
     background: white;
 }
 
+/* Common header element styling */
 #header > * {
     height: 2em;
     margin: 0 0.5em;
@@ -44,11 +51,13 @@ body, html {
     font-family: ArtifaktElement;
 }
 
+/* Title styling in header */
 #header .title {
     flex: 1 0 auto;
     height: auto;
 }
 
+/* Model dropdown styling */
 #models {
     flex: 0 1 auto;
     min-width: 2em;

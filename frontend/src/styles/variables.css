@@ -1,0 +1,22 @@
+:root {
+    /* Colors */
+    --primary-color: #0696d7;
+    --primary-color-hover: #0587c3;
+    --border-color: #d3d3d3;
+    --disabled-color: #999999;
+    --error-color: #ff0000;
+    --viewer-background: #f0f0f0;
+
+    /* Typography */
+    --font-family: ArtifaktElement, sans-serif;
+    
+    /* Layout */
+    --header-height: 3em;
+    --spacing-small: 0.5em;
+    --spacing-medium: 1em;
+    --spacing-large: 2em;
+    
+    /* Effects */
+    --border-radius: 4px;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+} 
