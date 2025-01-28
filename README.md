@@ -1,4 +1,4 @@
-# APS Simple Viewer (NestJS Version)
+# APS-3D-Model-Viewer-Nest-Vite-Docker
 
 A modern implementation of the Autodesk Platform Services (APS) Simple Viewer using NestJS and modern frontend practices. This project demonstrates how to create a web application that can view and interact with 3D models using Autodesk's viewer technology.
 
@@ -42,7 +42,7 @@ project/
 1. Clone the repository:
 ```bash
 git clone [repository-url]
-cd aps-simple-viewer-nestjs
+cd APS-3D-Model-Viewer-Nest-Vite-Docker
 ```
 
 2. Install dependencies:
