@@ -1,129 +1,173 @@
 # APS Simple Viewer Frontend
 
-This is a web application that lets you view and interact with 3D models using Autodesk's platform (APS). Think of it like a YouTube player, but for 3D models instead of videos!
+A modern, component-based frontend for the APS Simple Viewer application. This frontend is built with modern JavaScript practices and provides a clean, intuitive interface for viewing 3D models.
 
-## Current Structure vs Recommended Structure
+## Architecture
 
-### Current Structure
-```
-frontend/
-├── src/                    # Source files
-│   ├── main.js            # Main application code
-│   ├── viewer.js          # Viewer functionality
-│   └── main.css           # All styles
-├── index.html             # Main HTML file
-├── vite.config.js         # Vite configuration
-└── package.json           # Dependencies
-```
-
-### Recommended Modern Structure
+### Component Structure
 ```
 frontend/
 ├── src/
 │   ├── components/        # Reusable UI components
-│   │   ├── ModelList/    # Model list component
+│   │   ├── ModelList/    # Model selection and upload
 │   │   │   ├── index.js
 │   │   │   └── style.css
 │   │   └── Viewer/       # 3D viewer component
 │   │       ├── index.js
 │   │       └── style.css
 │   ├── services/         # API and external services
-│   │   ├── api.js       # Backend API calls
-│   │   └── viewer.js    # APS viewer service
-│   ├── styles/          # Global styles
-│   │   ├── main.css
-│   │   └── variables.css
-│   ├── utils/           # Helper functions
-│   │   └── error-handler.js
+│   │   ├── api.js        # Backend API communication
+│   │   └── viewer.js     # APS viewer service
+│   ├── styles/           # Global styles
+│   │   ├── main.css      # Main application styles
+│   │   └── variables.css # CSS variables and theming
 │   └── main.js          # Application entry point
-├── public/              # Static files
-│   └── favicon.ico
-├── index.html
-├── vite.config.js
-└── package.json
+├── public/              # Static assets
+├── index.html          # HTML entry point
+├── vite.config.js      # Build configuration
+└── package.json        # Dependencies and scripts
 ```
 
-## Why This Structure Is Better
+## Features
 
-1. **Components**: 
-   - Each UI piece gets its own folder
-   - Keeps related code together
-   - Makes it easier to find and fix things
+### Components
+- **ModelList**: Handles model selection and file uploads
+- **Viewer**: Manages the 3D viewer display and interaction
 
-2. **Services**:
-   - Separates API calls from UI code
-   - Makes it easier to change how we talk to the server
-   - Keeps viewer code organized
+### Services
+- **API Service**: Manages all backend communication
+- **Viewer Service**: Handles APS viewer initialization and configuration
 
-3. **Styles**:
-   - Global styles are separate from component styles
-   - CSS variables for consistent colors and sizes
-   - Easier to maintain a consistent look
+### Styling
+- CSS variables for consistent theming
+- Component-scoped styles
+- Responsive design
+- Modern animations and transitions
 
-4. **Utils**:
-   - Common functions in one place
-   - Reduces repeated code
-   - Easy to share helper functions
+## Development
 
-## How to Use It (for Developers)
+### Prerequisites
+- Node.js 16.x or later
+- npm 7.x or later
+- Modern web browser
 
-1. Install all the needed tools:
+### Setup
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Start the development mode (like a preview):
+2. Start development server:
 ```bash
 npm run dev
 ```
 
-3. Make it ready for real users:
+3. Access the application at `http://localhost:5173`
+
+### Build
 ```bash
 npm run build
 ```
 
-## How It's Built
+The build output will be in the `dist` directory.
 
-- Uses a tool called Vite to make development easier
-- Talks to a backend server to get and save models
-- Uses Autodesk's special tools to show 3D models
-- Uses modern JavaScript to keep code organized
+## Configuration
 
-## How It Talks to the Server
+### Viewer Settings
+The viewer can be configured in `services/viewer.js`:
 
-The app needs to talk to a server (backend) to:
-- Get the list of models: GET `/api/data`
-- Upload new models: POST `/api/data`
-- Check if a model is ready: GET `/api/data/:urn/status`
+```javascript
+const VIEWER_CONFIG = {
+    ENVIRONMENT: {
+        env: 'AutodeskProduction',
+        api: 'streamingV2'
+    },
+    EXTENSIONS: [
+        'Autodesk.DefaultTools.NavTools',
+        'Autodesk.ViewCubeUi',
+        // ... other extensions
+    ],
+    APPEARANCE: {
+        theme: 'light-theme',
+        backgroundColor: {
+            top: [240, 240, 240],
+            bottom: [181, 181, 181]
+        },
+        backgroundOpacity: 0.5,
+        lightPreset: 1
+    }
+};
+```
 
-(Think of these like special web addresses that do different things)
+### Theme Customization
+Global theme variables can be modified in `styles/variables.css`:
 
-## Important Settings
+```css
+:root {
+    --primary-color: #0696d7;
+    --primary-color-hover: #0587c3;
+    --border-color: #d3d3d3;
+    /* ... other variables */
+}
+```
 
-- The server (backend) runs on port 8080 (like a special radio channel)
-- The development version runs on port 5173 (another channel)
-- They talk to each other automatically!
+## Best Practices
 
-## Suggested Improvements
+1. **Component Organization**
+   - Each component in its own directory
+   - Component-specific styles alongside component code
+   - Clear separation of concerns
 
-1. **Component Organization**:
-   - Break the UI into smaller, reusable pieces
-   - Each component handles one specific thing
-   - Makes the code easier to understand and test
+2. **State Management**
+   - Clean component initialization
+   - Proper error handling
+   - Loading states for better UX
 
-2. **Style Management**:
-   - Use CSS modules or a styling system
-   - Keep styles close to their components
-   - Use variables for consistent theming
+3. **Code Style**
+   - ES6+ features
+   - Clear documentation
+   - Consistent naming conventions
 
-3. **Error Handling**:
-   - Central place for handling errors
-   - Consistent error messages
-   - Better user experience
+4. **Performance**
+   - Efficient DOM manipulation
+   - Optimized viewer initialization
+   - Smart error recovery
 
-4. **Code Splitting**:
-   - Load code only when needed
-   - Faster initial page load
-   - Better performance
+## Browser Support
 
-Would you like me to help implement these changes? 
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+1. Follow the existing code structure
+2. Maintain consistent styling
+3. Document new features
+4. Test thoroughly before submitting PRs
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Viewer Not Loading**
+   - Check network connectivity
+   - Verify APS credentials
+   - Check browser console for errors
+
+2. **Model Upload Issues**
+   - Verify file format support
+   - Check file size limits
+   - Ensure proper CORS configuration
+
+3. **Styling Issues**
+   - Clear browser cache
+   - Check CSS variable definitions
+   - Verify component-specific styles
+
+## Resources
+
+- [APS Documentation](https://aps.autodesk.com/developer/documentation)
+- [Vite Documentation](https://vitejs.dev/guide/)
+- [Modern JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide) 
